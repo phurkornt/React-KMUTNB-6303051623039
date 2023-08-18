@@ -13,11 +13,11 @@ export default function Banner(){
     switch(r){
         case 1:
             banner = './banners/r.jpg'
-            url = ''
+            url = 'https://react.dev/'
             break
         case 2:
             banner = './banners/rn.jpg'
-            url = ''
+            url = 'https://reactnative.dev/'
             break
         case 3:
             banner = './banners/n.jpg'
