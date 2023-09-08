@@ -1,5 +1,16 @@
 import React from "react";
-import { EventData2 } from "./event-data";
+import { userContext } from "./context";
+import Header2 from "./context-header2";
+import Content2 from "./context-content2";
+
 export default function App() {
-    return <EventData2/>
+
+    let [user,setUser] = React.useState("Hello World");
+
+    return (
+        <userContext.Provider value={[user,setUser]}>
+            <Header2/>
+            <Content2/>
+        </userContext.Provider>
+    )
 }
