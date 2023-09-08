@@ -6,7 +6,7 @@ export default class Header2 extends React.Component{
     static contextType = userContext;
     // override
     render(){
-        let [user,setUser] = this.context;
+        let {user,setUser,username} = this.context;
         const headerStyle={
             backgroundColor:"#cee",
             textAlign:"center",
@@ -19,7 +19,7 @@ export default class Header2 extends React.Component{
 
         const onClickSignin = (event)=>{
             event.preventDefault();
-            setUser("hello")
+            setUser(username)
         }
         return (
             <div style={headerStyle}>

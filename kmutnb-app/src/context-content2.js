@@ -3,16 +3,16 @@ import {userContext} from "./context";
 
 
 export default function Content2(){
-    let [user,setUser] = React.useContext(userContext);
+    let {user,setUser,username} = React.useContext(userContext);
     const contentStyle = {
-        backgroundColor:"#cee",
+        backgroundColor:"#ddd",
         textAlign:"center",
         padding:10,
         margin:10
     }
     const onClickSignin = (event)=>{
         event.preventDefault();
-        setUser("Hello")
+        setUser(username)
     }
 
     return (
