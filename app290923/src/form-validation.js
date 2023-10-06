@@ -1,25 +1,27 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import {useForm} from 'react-hook-form'
+
 export default function FormValidation() {
     const cats = [['100', 'ไอที'], ['200', 'เครื่องจักรกล'], ['300', 'เคมีภัณฑ์']]
     const opts = ['Option 1', 'Option 2', 'Option 3']
     const inputFile = React.createRef()
-    const { register, handleSubmit, formState: { errors } } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmitForm = (event) => {
         let maxNumFiles = 3
         let maxSize = 300
         if (inputFile.current.files.length > maxNumFiles) {
             alert(`เลือกได้ไม่เกิน ${maxNumFiles} ไฟล์`)
-            event.preventDefault()
+            // event.preventDefault()
             return
         }
         for (let f of inputFile.current.files) {
             if (f.size > maxSize * 1000) {
                 alert('ขนาดภาพควรไม่เกิน ', maxSize * 1000)
-                event.preventDefault()
+                // event.preventDefault()
                 return
             }
         }
+        return 0;
     }
     const err = {
         fontSize: 'smaller',
@@ -29,7 +31,7 @@ export default function FormValidation() {
 
         <div className="mt-3 mb-5 mx-auto p-3 rounded"
             style={{ width: '400px', background: '#cee' }}>
-            <form onSubmit={onSubmitForm}>
+            <form onSubmit={handleSubmit(onSubmitForm)}>
                 <div className="form-group mb-3">
                     <label htmlFor="cats" className="……………………">หมวดหมู่ *</label>
                     <select id="cats" className="form-select form-select-sm">
@@ -47,7 +49,6 @@ export default function FormValidation() {
                         {...register('name', { required: true, maxLength: 30 })} />
                     {errors.name && <div style={err}>กรุณาระบุชื่อสินค้า</div>}
                 </div>
-
                 <div className="form-group mb-3">
                     <label htmlFor="price">ราคาสินค้า *</label>
                     <input type="number" id="price" name="price" min="0" step="any"
@@ -84,7 +85,7 @@ export default function FormValidation() {
                     opts.map((opt, i) => {
                         return (
                             <div className="form-check form-check-inline mb-2">
-                                <input type="form-check-input" id={'opt' + i} value={opt}
+                                <input type="checkbox" id={'opt' + i} value={opt}
                                     className="form-check-input" />
                                 <label htmlFor={'opt' + i} className="form-check-label">{opt + i}</label>
                             </div>
@@ -92,7 +93,7 @@ export default function FormValidation() {
                     })
                 }
                 <div className="text-center mt-4">
-                    <button className="btn btn-primary btn-sm px-4">OK</button>
+                    <button  className="btn btn-primary btn-sm px-4">OK</button>
                 </div>
             </form >
         </div >

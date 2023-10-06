@@ -10,9 +10,10 @@ import FormValidation from './form-validation'
 
 function App() {
   return (
-    // <FormValidation/>
+    <FormValidation/>
     // <FormCheck/>
-    <FormText/>
+    // <FormText/>
+    // <h1>HELLo</h1>
   );
 }
 
